@@ -34,6 +34,8 @@ This project is a conversational AI application that uses:
    ```
 
 ## Deployment on Render
+frontend = https://spring-ai-with-groq.onrender.com
+backend = https://spring-ai-with-groq-1.onrender.com
 
 This project is configured for deployment on Render.
 
