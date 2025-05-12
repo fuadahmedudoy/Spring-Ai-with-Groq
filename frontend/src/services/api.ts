@@ -6,7 +6,10 @@ export interface Message {
 }
 
 // The URL of your Spring Boot backend
-const API_URL = "http://localhost:8080/api";
+// Use environment variable if available, or fall back to relative URL for local development
+const API_URL = import.meta.env.VITE_API_BASE_URL ? 
+  `${import.meta.env.VITE_API_BASE_URL}/api` : 
+  "/api";  // Using relative URL
 
 /**
  * Sends a message to the backend and returns the AI response

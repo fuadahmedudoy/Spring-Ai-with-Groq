@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Send, Trash2 } from "lucide-react";
+import { API_BASE_URL } from "@/config";
 
 interface Message {
   id: string;
@@ -48,7 +49,7 @@ export default function Chat() {
     setError(null);
     try {
       console.log("Testing backend connection...");
-      const response = await fetch("http://localhost:8080/api/test", {
+      const response = await fetch(`${API_BASE_URL}/api/test`, {
         method: "GET",
         headers: {
           "Accept": "text/plain",
@@ -74,7 +75,7 @@ export default function Chat() {
   
   const clearChat = async () => {
     try {
-      const response = await fetch("http://localhost:8080/api/chat/clear", {
+      const response = await fetch(`${API_BASE_URL}/api/chat/clear`, {
         method: "POST",
       });
       
@@ -115,7 +116,7 @@ export default function Chat() {
     try {
       // Send request to Spring Boot backend
       const encodedMessage = encodeURIComponent(inputValue);
-      const url = `http://localhost:8080/api/chat/${encodedMessage}${contextId ? `?contextId=${contextId}` : ''}`;
+      const url = `${API_BASE_URL}/api/chat/${encodedMessage}${contextId ? `?contextId=${contextId}` : ''}`;
       console.log("Sending request to:", url);
       
       const response = await fetch(url, {
