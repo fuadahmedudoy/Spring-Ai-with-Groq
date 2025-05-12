@@ -19,6 +19,14 @@ export default defineConfig(({ mode }) => ({
       }
     }
   },
+  preview: {
+    host: "0.0.0.0",
+    port: 10000,
+    allowedHosts: [
+      "spring-ai-with-groq-1.onrender.com",
+      "*.onrender.com"
+    ]
+  },
   plugins: [
     react(),
     mode === 'development' &&
