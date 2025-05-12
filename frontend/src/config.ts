@@ -1,7 +1,6 @@
 // API Configuration
-const isDevelopment = import.meta.env.DEV;
-
-// In development mode use local IP, in production use the environment variable
-export const API_BASE_URL = isDevelopment 
-  ? 'http://192.168.1.110:8080'
-  : import.meta.env.VITE_API_BASE_URL || 'https://your-backend-url.com'; 
+// Local development uses the hardcoded IP
+// For Render: Set VITE_API_URL environment variable in the Render dashboard
+export const API_BASE_URL = (import.meta.env && import.meta.env.VITE_API_URL) 
+  ? import.meta.env.VITE_API_URL 
+  : 'http://192.168.1.110:8080'; 
