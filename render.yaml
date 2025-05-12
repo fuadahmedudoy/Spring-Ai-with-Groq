@@ -1,0 +1,37 @@
+services:
+  # Spring Boot Backend
+  - type: web
+    name: spring-ai-chat-backend
+    runtime: docker
+    plan: free
+    rootDir: demo
+    buildCommand: ./mvnw clean package -DskipTests
+    startCommand: java -jar target/demo-0.0.1-SNAPSHOT.jar
+    envVars:
+      - key: SPRING_AI_OPENAI_API_KEY
+        sync: false
+      - key: SPRING_AI_OPENAI_BASE_URL
+        value: https://api.groq.com/openai
+      - key: SPRING_AI_OPENAI_CHAT_OPTIONS_MODEL
+        value: llama3-70b-8192
+      - key: SPRING_AI_OPENAI_CHAT_OPTIONS_TEMPERATURE
+        value: 0.7
+      - key: PORT
+        value: 8080
+
+  # React Frontend
+  - type: web
+    name: spring-ai-chat-frontend
+    runtime: node
+    plan: free
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    startCommand: npm run start
+    envVars:
+      - key: NODE_VERSION
+        value: 18.0.0
+      - key: VITE_API_BASE_URL
+        fromService:
+          type: web
+          name: spring-ai-chat-backend
+          envVarKey: RENDER_EXTERNAL_URL 
