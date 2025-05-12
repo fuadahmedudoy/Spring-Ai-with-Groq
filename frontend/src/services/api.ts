@@ -5,10 +5,12 @@ export interface Message {
   sender: "user" | "ai";
 }
 
+// Import configuration
+import { API_BASE_URL } from "../config";
+
 // The URL of your Spring Boot backend
-// Use environment variable if available, or fall back to relative URL for local development
-const API_URL = import.meta.env.VITE_API_BASE_URL ? 
-  `${import.meta.env.VITE_API_BASE_URL}/api` : 
+const API_URL = API_BASE_URL ? 
+  `${API_BASE_URL}/api` : 
   "/api";  // Using relative URL
 
 /**
