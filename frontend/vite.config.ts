@@ -23,7 +23,7 @@ export default defineConfig(({ mode }) => ({
     host: "0.0.0.0",
     port: Number(process.env.PORT) || 10000,
     strictPort: false,
-    allowedHosts: 'all'
+    allowedHosts: ["spring-ai-with-groq-1.onrender.com", "all"]
   },
   plugins: [
     react(),
