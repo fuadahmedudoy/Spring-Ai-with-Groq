@@ -4,7 +4,7 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 
 // Default API URL for local development
-const apiUrl = process.env.VITE_API_URL || 'http://192.168.1.110:8080';
+const apiUrl ='https://spring-ai-with-groq.onrender.com';
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
