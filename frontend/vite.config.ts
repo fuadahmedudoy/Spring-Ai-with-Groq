@@ -21,11 +21,9 @@ export default defineConfig(({ mode }) => ({
   },
   preview: {
     host: "0.0.0.0",
-    port: 10000,
-    allowedHosts: [
-      "spring-ai-with-groq-1.onrender.com",
-      "*.onrender.com"
-    ]
+    port: Number(process.env.PORT) || 10000,
+    strictPort: false,
+    allowedHosts: 'all'
   },
   plugins: [
     react(),
@@ -37,4 +35,5 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  base: './',
 }));
